@@ -20,7 +20,7 @@
       "@app/sterlingpro": ["sterlingpro/"]
     },
     "typeRoots": ["./node_modules/@types", "./typings"],
-    "types": ["reflect-metadata"],
+    "types": [],
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
