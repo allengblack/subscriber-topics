@@ -2,6 +2,10 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import morgan from "morgan";
 import { subscribe } from "./server/subscriber.controller";
+import dotenv from 'dotenv';
+
+dotenv.config();
+const PORT = process.env.PORT || 9001;
 
 const router = express
   .Router({
@@ -16,4 +20,4 @@ express()
   .use(bodyParser.json())
   .use(morgan('tiny'))
   .use("/", router)
-  .listen(9001, () => console.log("Listening on 9001"))
+  .listen(PORT, () => console.log(`Subscriber listening on ${PORT}`))

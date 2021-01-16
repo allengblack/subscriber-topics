@@ -1,6 +1,12 @@
 import mongoose from 'mongoose';
 import { app } from "./app";
+import dotenv from "dotenv";
 
-mongoose.connect("mongodb://localhost:27017/pub-sub", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+dotenv.config();
 
-export const server = app.listen(9000, () => console.log("Listening on 9000"));
+const PORT = process.env.PORT || 9000;
+const MONGO_URL = process.env.MONGO_URL;
+
+mongoose.connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
+export const server = app.listen(PORT, () => console.log(`Publisher listening on ${PORT}`));
