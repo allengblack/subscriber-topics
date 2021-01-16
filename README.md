@@ -15,7 +15,7 @@ To publish, send a POST request to '/publish/{topic} and the payload can be any 
 
 There are sample bash scripts to help with the demo. After the repo has been cloned, run `yarn` in the respective directories
 and then use `start-server.sh` to start the servers. 
-Once the servers are running, `sample.sh` makes sample CURL calls to the servers, both to subscribe to a topic and publish from it. 
+Once the servers are running, `sample.sh` makes sample CURL calls to the servers, both to subscribe to a topic and publish from it. <br>
 NOTE: Remember to run `stop-server.sh` to stop the servers or they'll keep running in the background. Also note that the sample scripts set the demo servers to run on ports 8000 and 9000 respectively. If you have processes running on those ports, there will be conflicts.
 
 Thank you for reading this far. 
