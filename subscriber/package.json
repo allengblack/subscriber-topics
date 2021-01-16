@@ -2,8 +2,8 @@
   "scripts": {
     "start": "node ./dist",
     "start:dev": "nodemon ./dist",
-    "watch": "tsc --watch -p ./tsconfig.json",
-    "test": "mocha -r ts-node/register src/**/*.spec.ts"
+    "compile": "tsc",
+    "watch": "tsc --watch -p ./tsconfig.json"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

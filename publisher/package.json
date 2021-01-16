@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node ./dist",
     "start:dev": "nodemon ./dist",
+    "compile": "tsc",
     "watch": "tsc --watch -p ./tsconfig.json",
     "test": "jest --runInBand --detectOpenHandles --forceExit"
   },
