@@ -1,7 +1,9 @@
+import axios from 'axios';
 import bodyParser from 'body-parser';
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { SubscriptionModel } from './data/subscriptions/subscriptions.model';
+import morgan from "morgan";
 
 const router = express.Router({
   strict: true
@@ -12,9 +14,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/subscribe/:topic', async (req: Request, res: Response) => {
-  const { body, params: { topic } } = req;
-
   try {
+    const { body, params: { topic } } = req;
     await SubscriptionModel.updateOne({ topic },
       {
         topic: topic,
@@ -35,19 +36,30 @@ router.post('/subscribe/:topic', async (req: Request, res: Response) => {
 router.post("/publish/:topic", async (req: Request, res: Response) => {
   try {
     const { body, params: { topic } } = req;
+    const subscription = await SubscriptionModel.findOne({ topic }).select("+subscribers -_id");
 
-    res.send({
+    if (!subscription) return res.status(200).json({ msg: "There are no subscibers to this topic" })
+
+    for (const s of subscription.subscribers) {
+      axios.post(s, body)
+        .then(_ => { console.log(`Published to ${s} successfully`); })
+        .catch(_ => { console.error(`Error publishing to ${s}`); });
+    }
+
+    res.status(202).json({
       topic,
       data: body
-    })
+    });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ msg: 'Something went wrong ' + err })
+    res.status(502).json({ msg: 'Something went wrong ' + err })
   }
 });
 
 const app = express();
 app.use(bodyParser.json());
+app.use(morgan('tiny'));
+
 app.use("/", router);
 mongoose.connect("mongodb://localhost:27017/pub-sub", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
