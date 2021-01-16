@@ -5,7 +5,7 @@ import { subscribe } from "./server/subscriber.controller";
 import dotenv from 'dotenv';
 
 dotenv.config();
-const PORT = process.env.PORT || 9001;
+const PORT = process.env.PORT || 8000;
 
 const router = express
   .Router({
