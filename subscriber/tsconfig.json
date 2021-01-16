@@ -12,13 +12,6 @@
     "noUnusedLocals": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
-    "paths": {
-      "@app/common/*": ["common/*"],
-      "@app/data/*": ["data/*"],
-      "@app/services/*": ["services/*"],
-      "@app/server/*": ["server/*"],
-      "@app/sterlingpro": ["sterlingpro/"]
-    },
     "typeRoots": ["./node_modules/@types", "./typings"],
     "types": [],
     "esModuleInterop": true,
