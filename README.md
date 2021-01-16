@@ -1,4 +1,4 @@
-# subscriber-topics
+# Subscriber Topics
 
 This application keeps track of Subscribers to various Topics. 
 A Topic is any string and the subsriber is an HTTP URL.
