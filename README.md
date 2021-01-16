@@ -7,7 +7,7 @@ When a message is published on a topic, it should be forwarded to all subscriber
 It was written using Typescript and NodeJS/Express and uses MongoDB as a database. There are two server applications bundled in this project. The server that keeps track of subscriptions is in the publisher directory. The other project is for a test subscriber URL that can be used to test.<br><br>
 
 To run this application, endure that you have a Mongo DB instance running and then set up environment variables as seen in the env.example file(s).
-Then install all the dependencies using by running `yarn` in the directories of the publisher and subcriber respectively.<br> Then inside each directory, the script "compile" should be run using `yarn compile" to transpile into JavaScript.<br><br>
+Then install all the dependencies using by running `yarn` in the directories of the publisher and subcriber respectively.<br> Then inside each directory, the script "compile" should be run using `yarn compile` to transpile into JavaScript.<br><br>
 The server can then be run using `yarn start`.
 <br><br>
 To subscribe, send a POST request the publisher at route '/subscribe/{topic} where the Topic is any string. The body of the request takes one `url` parameter that is the URL of the endpoint that future pulish messages should be sent to.<br>
